@@ -8,9 +8,8 @@ filter = [1,0;
       
 weights=ones(3,144)/100;
       
-for x=1:12 
+for x=1:1
 conv2ed = conv2(firstImage,filter,'valid');
-%cleared = clearPadding(conv2ed);
 
 dlX = dlarray(conv2ed, 'SSCB');
 
@@ -26,9 +25,9 @@ softmaxVs = softmax(Vs);
 
 %Backpropagation
 S=sum(softmaxVs);
-grad(1)=0.05;
-grad(2)=-0.05;
-grad(3)=-0.04;
+grad(1)=-1*(exp(Vs(1))*exp(Vs(2)))/(S^2);
+grad(2)=-1*(exp(Vs(2))*(S-exp(Vs(2))))/S^2;
+grad(3)=-1*(exp(Vs(2))*exp(Vs(3)))/S^2;
 
 %finding local gradient flattening
 for i=1:sizeOf

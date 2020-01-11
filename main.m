@@ -23,9 +23,9 @@ softmaxVs = softmax(Vs);
 
 %Backpropagation
 S=sum(softmaxVs);
-grad(1)=-1*(-1/softmaxVs(1))*((exp(softmaxVs(1))*exp(softmaxVs(2))*exp(softmaxVs(3))/S^3));
-grad(2)=-1*(-1/softmaxVs(1))*((exp(softmaxVs(1))*exp(softmaxVs(2)))/S^2);
-grad(3)=-1*(-1/softmaxVs(1))*((exp(softmaxVs(1))*exp(softmaxVs(2)))/S^2);
+grad(1)=-1*(exp(Vs(1))*exp(Vs(2)))/(S^2);
+grad(2)=-1*(exp(Vs(2))*(S-exp(Vs(2))))/S^2;
+grad(3)=-1*(exp(Vs(2))*exp(Vs(3)))/S^2;
 
 %finding local gradient flattening
 for i=1:sizeOf
