@@ -1,5 +1,4 @@
     
-
     conv2ed = conv2(test(:,:,1),newF,'valid');
 
     dlX = dlarray(conv2ed, 'SSCB');

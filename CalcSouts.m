@@ -1,3 +1,4 @@
+%Finding gradients
 function [Souts] = CalcSouts(desiredValue, S, Vs)
     
     switch desiredValue
