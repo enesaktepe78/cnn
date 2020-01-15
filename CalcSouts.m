@@ -1,6 +1,5 @@
-%Finding gradients
 function [Souts] = CalcSouts(desiredValue, S, Vs)
-    
+    %calculates gradients 
     switch desiredValue
         case 1
             Souts(1,1) = (exp(Vs(1,1)) * S - exp(Vs(1,1)) * exp(Vs(1,1))) / (S*S);

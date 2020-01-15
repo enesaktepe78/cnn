@@ -1,5 +1,8 @@
 function [value] = testM(testImage, weight, filter)
-
+%elde ettiðimiz deðerlerin 0-1 aralýðýnda olmamasýndan dolayý
+%hangisini alacaðýmýz konusunda emin olamadýk. 
+%bu durumda en büyük deðere sahip olan outputun index deðerini 
+%tahmin olarak döndürüyoruz.
 conv2ed = conv2(testImage,filter,'valid');
 
 dlX = dlarray(conv2ed, 'SSCB');
@@ -11,6 +14,9 @@ flattening = reshape(y,[],1);
 Vs = weight * flattening;
 
 softmaxVs = softmax(Vs);
-value = softmaxVs;
+
+maximum = max(max(softmaxVs));
+[x,y]=find(softmaxVs==maximum);
+value = x;
 end
 
